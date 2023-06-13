@@ -11,21 +11,23 @@ window.addEventListener('load', function() {
     seatButtons[i].addEventListener('click', function() {
       toggleSeatSelection(this);
     });
-
-    // Zustand basierend auf der TXT-Datei überprüfen
-    checkSeatStatus(seatButtons[i]);
+    
+    // Zustand basierend auf der CSV-Datei überprüfen
+    checkSeatStatus(this);
   }
 });
 
 // Funktion zum Auswählen/Deselektieren eines Sitzes
 function toggleSeatSelection(seat) {
   if (seat.classList.contains('reserved')) {
-    return; // Wenn der Sitz reserviert ist, wird nichts unternommen
+    seat.classList.remove('reserved');
+    seat.classList.add('available');
+  } else {
+    seat.classList.remove('available');
+    seat.classList.add('reserved');
   }
 
-  seat.classList.toggle('selected');
-
-  var seatNumber = seat.getAttribute('name');
+  var seatNumber = seat.name;
 
   if (selectedSeats.includes(seatNumber)) {
     var index = selectedSeats.indexOf(seatNumber);
@@ -37,19 +39,19 @@ function toggleSeatSelection(seat) {
   updateSelectedSeatsDisplay();
 }
 
-// Funktion zum Überprüfen des Sitzplatzstatus basierend auf der TXT-Datei
+// Funktion zum Überprüfen des Sitzplatzstatus basierend auf der CSV-Datei
 function checkSeatStatus(seat) {
-  var seatNumber = seat.getAttribute('name');
-
-  // AJAX-Anfrage zum Überprüfen des Sitzplatzstatus
+  var seatNumber = seat.name;
+  
+  // AJAX-Anfrage zum Laden der CSV-Datei
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'seats.txt', true);
+  xhr.open('GET', 'seats.csv', true);
   xhr.onload = function() {
     if (xhr.status === 200) {
-      var seatStatus = xhr.responseText.split('\n');
-      for (var i = 0; i < seatStatus.length; i++) {
-        var status = seatStatus[i].split(':');
-        if (status[0] === seatNumber && status[1] === 'reserved') {
+      var seatData = xhr.responseText.split('\n');
+      for (var i = 0; i < seatData.length; i++) {
+        var seatInfo = seatData[i].split(',');
+        if (seatInfo[0] === seatNumber && seatInfo[1] === 'reserved') {
           seat.classList.remove('available');
           seat.classList.add('reserved');
           break;
