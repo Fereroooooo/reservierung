@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reservation Confirmation</title>
+</head>
+<body>
+    <h1>Reservation Confirmation</h1>
+    <p>Thank you for making a reservation with us! Here are the details of your reservation:</p>
+    <ul>
+        <li>Name: <span id="reservation-name"></span></li>
+        <li>Phone: <span id="reservation-phone"></span></li>
+        <li>Email: <span id="reservation-email"></span></li>
+        <li>Date: <span id="reservation-date"></span></li>
+        <li>Time: <span id="reservation-time"></span></li>
+        <li>Extras: <span id="reservation-extras"></span></li>
+        <li>Seats: <span id="reservation-seats"></span></li>
+    </ul>
+    <script>
+        let name = localStorage.getItem("name");
+        let phone = localStorage.getItem("phone");
+        let email = localStorage.getItem("email");
+        let date = localStorage.getItem("date");
+        let time = localStorage.getItem("time");
+        let extras = localStorage.getItem("extras");
+        let seats = localStorage.getItem("seats");
+
+        // display the values on the page
+        document.getElementById("reservation-name").innerHTML = name;
+        document.getElementById("reservation-phone").innerHTML = phone;
+        document.getElementById("reservation-email").innerHTML = email;
+        document.getElementById("reservation-date").innerHTML = date;
+        document.getElementById("reservation-time").innerHTML = time;
+        document.getElementById("reservation-extras").innerHTML = extras;
+        document.getElementById("reservation-seats").innerHTML = seats;
+    </script>
+</body>
+</html>

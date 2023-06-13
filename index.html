@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reservierungsplugin</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="script.js"></script>
+</head>
+<body>
+  <h1>Reservierungsplugin</h1>
+  
+  <div id="seating-chart">
+    <div class="seating-chart">
+        <button name="S1" class="seat available"></button>
+        <button name="S2" class="seat available"></button>
+        <button name="P1" class="seat available"></button>
+        <button name="P2" class="seat available"></button>
+        <button name="C1" class="seat available"></button>
+        <button name="C2" class="seat available"></button>
+        <button name="C3" class="seat available"></button>
+        <button name="C4" class="seat available"></button>
+        <button name="A1" class="seat available"></button>
+    </div>
+  </div>
+  
+  <h2>Reservierungsformular</h2>
+  <form id="form" action="process.php" class="form" method="post">
+    <label for="name">*Name:</label>
+    <input type="text" id="name" name="name" required>
+    <br>
+    <label for="phone">*Telefonnummer:</label>
+    <input type="tel" id="phone" name="phone" required>
+    <br>
+    <label for="email">*Mail:</label>
+    <input type="email" id="email" name="email" required>
+    <br>
+    <label for="date">*Datum:</label>
+    <input type="date" id="date" name="date" required>
+    <br>
+    <label for="time">*Uhrzeit:</label>
+    <input type="time" id="time" name="time" required>
+    <br>
+    <label for="extras">Extras:</label>
+    <textarea id="extras" name="extras"></textarea>
+    <br>
+    <label for="selected-seats">Ausgewählte Plätze:</label>
+    <input type="text" id="selected-seats" name="selected-seats" readonly>
+    <br>
+    <label for="privacy">*Bitte die Datenschutzerklärung bestätigen:</label>
+    <input type="checkbox" id="privacy" name="privacy" required>
+    <br>
+    <input type="submit" value="Senden">
+  </form>
+  
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+#seating-chart {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.seat {
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+  border: 1px solid #00b8be;
+  cursor: pointer;
+}
+
+.seat.selected {
+  background-color: pink;
+}
+
+.seat.reserved {
+  background-color: red;
+}
+
+.seat.available {
+  background-color: lightgreen;
+}
+
+.form {
+  background-color: rgb(14, 14, 14);
+  text-align: justify;
+}
+
+label {
+  color: white;
+}
+
+input {
+  color: black;
+  background-color: white;
+}
+
+textarea {
+  color: black;
+  background-color: white;
+}
